@@ -1,0 +1,29 @@
+// C++ code
+//
+#include <Servo.h>
+
+int set = 0;
+
+int bt = 0;
+
+Servo servo_4;
+
+void setup()
+{
+  pinMode(2, INPUT);
+  Serial.begin(9600);
+  servo_4.attach(4, 500, 2500);
+}
+
+void loop()
+{
+  bt = digitalRead(2);
+  Serial.println(bt);
+  if (bt == 0) {
+    servo_4.write(90);
+    delay(5000); // Wait for 5000 millisecond(s)
+    servo_4.write(180);
+  } else {
+    servo_4.write(0);
+  }
+}
